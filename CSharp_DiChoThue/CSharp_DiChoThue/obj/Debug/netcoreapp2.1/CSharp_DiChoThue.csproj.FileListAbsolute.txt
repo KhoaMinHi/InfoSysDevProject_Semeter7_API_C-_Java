@@ -1,0 +1,14 @@
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\bin\Debug\netcoreapp2.1\CSharp_DiChoThue.deps.json
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\bin\Debug\netcoreapp2.1\CSharp_DiChoThue.runtimeconfig.json
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\bin\Debug\netcoreapp2.1\CSharp_DiChoThue.runtimeconfig.dev.json
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\bin\Debug\netcoreapp2.1\CSharp_DiChoThue.dll
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\bin\Debug\netcoreapp2.1\CSharp_DiChoThue.pdb
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.csprojAssemblyReference.cache
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.csproj.CoreCompileInputs.cache
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.RazorAssemblyInfo.cache
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.RazorAssemblyInfo.cs
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.AssemblyInfoInputs.cache
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.AssemblyInfo.cs
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.RazorTargetAssemblyInfo.cache
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.dll
+D:\HK-VII_English\InfoSysDev\DA_PTHTTT\CSharp_DiChoThue\CSharp_DiChoThue\obj\Debug\netcoreapp2.1\CSharp_DiChoThue.pdb

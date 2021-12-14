@@ -1,0 +1,9 @@
+1. Auto generate models from existing database (database-fisrt).
+link: https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx
+--1.1 In Visual Studio, select menu Tools -> NuGet Package Manger -> Package Manger Console and run the following command:
+--1.2 paste the statement: Scaffold-DbContext "Server=.;Database=DiChoThue;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+2. Warning connection string from 1. Auto generate models
+link: https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-strings
+
