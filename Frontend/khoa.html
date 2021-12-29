@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>
+        demo
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=places"></script>
+
+</head>
+
+
+<div id="main" >
+    <h1> Front end call APIs</h1>
+    
+        <hr>
+        <p> Department: 
+        <ul>
+            <li v-for="item in dept" :key="item.message">
+                {{ item.dname }}
+            </li>
+        </ul>
+        </p>
+        <hr>
+        <p> Employee: 
+            <ul>
+                <li v-for="item in emp" :key="item.message">
+                    {{ item.hoten }}
+                </li>
+            </ul>
+            </p>
+    
+
+    <button v-on:click ="fetchAPIData">Department</button>
+    <button v-on:click ="fetchAPIData2">Employee</button>
+    
+</div>
+
+<script src="code.js"> </script>
+
+</html>

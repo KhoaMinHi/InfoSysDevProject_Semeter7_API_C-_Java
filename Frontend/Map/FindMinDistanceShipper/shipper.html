@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <title>Tìm shipper gần nhất!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./shipperjs.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container" id="main">
+
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Họ Tên</th>
+              <th scope="col">Vĩ Độ</th>
+              <th scope="col">Kinh Độ</th>
+              <th scope="col">Số Điện Thoại</th>
+              <th scope="col">Tình Trạng Sức Khỏe</th>
+              <th scope="col">Vị Trí Hiện Tại</th>
+              <th scope="col">Km</th>
+              <th scope="col">Chọn Shipper</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in shipper" :key="item.message">
+              <td>{{ item.shipper.hoTen }}</td>
+              <td>{{ item.shipper.latitude }}</td>
+              <td>{{ item.shipper.longtitude }}</td>
+              <td>{{ item.shipper.soDienThoai }}</td>
+              <td>{{ item.shipper.tinhTrangSucKhoe }}</td>
+              <td>{{ item.shipper.viTriHienTai }}</td>
+              <td>{{ item.km }}</td>
+              <td><button v-on:click="bookShipper"> Chọn </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button v-on:click="fetchAPIData">Shipper</button>
+    <button v-on:click="mounted">axio</button>
+
+  </div>
+
+  <script src="shipper.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
