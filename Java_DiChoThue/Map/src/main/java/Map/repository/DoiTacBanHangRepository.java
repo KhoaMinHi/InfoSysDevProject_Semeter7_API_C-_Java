@@ -13,11 +13,12 @@ import Map.model.DoiTacBanHang;
 @EnableJpaRepositories
 @Transactional
 @Repository
-public interface DoiTacBanHangRepository extends JpaRepository<DoiTacBanHangRepository, Long>
+public interface DoiTacBanHangRepository extends JpaRepository<DoiTacBanHang, Long>
 {
 	@Query(
-			//value = "select * from Shipper s where s.ViTriHienTai like N'%Khê%' or s.ViTriHienTai like N'%Kỳ%'",
-			value = "select * from Shipper s where s.ViTriHienTai like N'%Khê%'",
+			value = "select dt.MaDoiTacBanHang, dt.TenDoiTacBH, dt.SDTDoiTacBH, dc.DiaChi, dc.Latitude, dc.Longtitude " + 
+					"from DoiTacBanHang dt join DiaChiDoitac dc " + 
+					"	on dt.MaDoiTacBanHang=dc.MaDoiTacBanHang",
 			nativeQuery= true)
 	List<DoiTacBanHang> findDoiTacBanHangLaLongtitudeNative();
 }

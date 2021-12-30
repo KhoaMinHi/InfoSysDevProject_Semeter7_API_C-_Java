@@ -1,7 +1,5 @@
 package Map.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,18 +18,15 @@ public class DoiTacBanHang {
 	@Column(name = "SDTDoiTacBH", length = 10)
 	private String sdtdoibanbh;
 	
-	@Column(name = "emailDoiTacBH", length = 50)
-	private String emaildoitacbh;
-	
-	@Column(name = "ngayBatDauBan")
-	private LocalDate ngaybatdauban;
-	
 	@Column(name = "DiaChi", length = 50)
 	private String diachi;
 	
-	@Column(name = "KhuVuc", length = 10)
-	private String khuvuc;
-
+	@Column(name = "Latitude", length = 50)
+	private Float latitude;
+	
+	@Column(name = "Longtitude")
+	private Float longtitude;
+	
 	public Integer getMadoitacbanhang() {
 		return madoitacbanhang;
 	}
@@ -56,22 +51,6 @@ public class DoiTacBanHang {
 		this.sdtdoibanbh = sdtdoibanbh;
 	}
 
-	public String getEmaildoitacbh() {
-		return emaildoitacbh;
-	}
-
-	public void setEmaildoitacbh(String emaildoitacbh) {
-		this.emaildoitacbh = emaildoitacbh;
-	}
-
-	public LocalDate getNgaybatdauban() {
-		return ngaybatdauban;
-	}
-
-	public void setNgaybatdauban(LocalDate ngaybatdauban) {
-		this.ngaybatdauban = ngaybatdauban;
-	}
-
 	public String getDiachi() {
 		return diachi;
 	}
@@ -79,30 +58,36 @@ public class DoiTacBanHang {
 	public void setDiachi(String diachi) {
 		this.diachi = diachi;
 	}
-
-	public String getKhuvuc() {
-		return khuvuc;
+	
+	public Float getLatitude() {
+		return latitude;
 	}
 
-	public void setKhuvuc(String khuvuc) {
-		this.khuvuc = khuvuc;
+	public void setLatitude(Float latitude) {
+		this.latitude = latitude;
 	}
 
-	public DoiTacBanHang() {
-		// TODO Auto-generated constructor stub
+	public Float getLongtitude() {
+		return longtitude;
 	}
 
-	public DoiTacBanHang(Integer madoitacbanhang, String tendoitacbh, String sdtdoibanbh, String emaildoitacbh,
-			LocalDate ngaybatdauban, String diachi, String khuvuc) {
+	public void setLongtitude(Float longtitude) {
+		this.longtitude = longtitude;
+	}
+
+
+	public DoiTacBanHang(Integer madoitacbanhang, String tendoitacbh, String sdtdoibanbh,
+			String diachi, Float latitude, Float longtitude) {
 		super();
 		this.madoitacbanhang = madoitacbanhang;
 		this.tendoitacbh = tendoitacbh;
 		this.sdtdoibanbh = sdtdoibanbh;
-		this.emaildoitacbh = emaildoitacbh;
-		this.ngaybatdauban = ngaybatdauban;
 		this.diachi = diachi;
-		this.khuvuc = khuvuc;
-	}
-
+		this.latitude = latitude;
+		this.longtitude = longtitude;
+	}	
 	
+	public DoiTacBanHang() {
+		super();
+	}
 }
