@@ -37,16 +37,19 @@
               <td>{{ item.shipper.tinhTrangSucKhoe }}</td>
               <td>{{ item.shipper.viTriHienTai }}</td>
               <td>{{ item.km }}</td>
-              <td><button v-on:click="bookShipper"> Chọn </button></td>
+              <td><button href="#"> Chọn </button></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <button v-on:click="fetchAPIData">Shipper</button>
-    <button v-on:click="mounted">axio</button>
-
+    <div class="row justify-content-end">
+      <div class="col-4">
+        <button v-on:click="fetchAPIData">Tìm shipper ngắn nhất</button>
+      </div>
+      
+    </div>
   </div>
 
   <script src="shipper.js"> </script>

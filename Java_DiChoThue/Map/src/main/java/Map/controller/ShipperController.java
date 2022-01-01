@@ -39,27 +39,6 @@ public class ShipperController {
 	Float distance;
 	
 	//api
-	@GetMapping("/shipper")
-	public ResponseEntity<List<Shipper>> XemDanhSachShipper() {
-		try {
-
-			List<Shipper> shipperlst = new ArrayList<Shipper>();
-			// shipperlst = repo.findAll();
-			repo.findAll().forEach(shipperlst::add);
-			// System.out.println("result = " + shipperlst.toString());
-
-			if (shipperlst.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-
-			return new ResponseEntity<>(shipperlst, HttpStatus.OK);
-
-		} catch (Exception e) {
-
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-
 	@GetMapping("/mindistance")
 	public ResponseEntity<List<ShipperAndAPIDistances>> CalculateDistances() {
 		try {

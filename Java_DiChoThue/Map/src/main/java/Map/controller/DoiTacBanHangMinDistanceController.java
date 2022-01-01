@@ -31,7 +31,7 @@ public class DoiTacBanHangMinDistanceController {
 	@Autowired
 	DoiTacBanHangRepository repo;
 
-	String mywaypoint = "15.217829, 108.885161";
+	String mywaypoint = "10.883906724776939, 106.78149264439136";
 	String otherwaypoint;
 	String bingMapKey = "AiacEpsBR4osxFZz9QUBlM_SyznWpTCoLsXquKyFKugM_khBEq7bGNalUngVCN1L";
 	// http://dev.virtualearth.net/REST/V1/Routes?wp.0=37.779160067439079,-122.42004945874214&wp.1=32.715685218572617,-117.16172486543655&key={BingMapsKey}
@@ -42,26 +42,37 @@ public class DoiTacBanHangMinDistanceController {
 
 	// api
 	@GetMapping("/mindistancepartner/{currentPage}/{perPage}")
-	public ResponseEntity<List<DoiTacBanHangMinDistance>> CalculateDistances(@PathVariable String currentPage, 
+	public ResponseEntity<List<Object>> CalculateDistances(@PathVariable String currentPage, 
 			@PathVariable String perPage) 
 	{
-		int numList = Integer.parseInt(currentPage) * Integer.parseInt(perPage);
-		
+		int cPage = Integer.parseInt(currentPage);
+		int pPage = Integer.parseInt(perPage);
+		int endRow = cPage * pPage;
+		int startCount = (cPage - 1)*pPage;
 		
 		try {
 			// create by DoiTacBanHang and Distance constructor to contain the result
+			List<Object> lstObject = new ArrayList<Object>();
 			List<DoiTacBanHangMinDistance> doitaclst = new ArrayList<DoiTacBanHangMinDistance>();
+			List<DoiTacBanHangMinDistance> myList = caculateMinDirection();
+			int listSize = myList.size();
+			
+			if(listSize < endRow) {
+				endRow = listSize;
+			}
 			// caculate min Distance and add DoiTacBanHang min distance
-			for(int i = 0; i < numList; i++) {
-				doitaclst.add(caculateMinDirection().get(i));
+			for(int i = startCount; i < endRow; i++) {
+				doitaclst.add(myList.get(i));
 			}
 			
 
 			if (doitaclst.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-
-			return new ResponseEntity<>(doitaclst, HttpStatus.OK);
+			
+			lstObject.add(doitaclst);
+			lstObject.add(listSize);
+			return new ResponseEntity<>(lstObject, HttpStatus.OK);
 
 		} catch (Exception e) {
 

@@ -2,6 +2,7 @@ package Map.model;
 
 public class DoiTacBanHangMinDistance {
 	Float distance;
+	int numberrow;
 	DoiTacBanHang doitac;
 	public Float getDistance() {
 		return distance;
@@ -15,9 +16,17 @@ public class DoiTacBanHangMinDistance {
 	public void setDoitac(DoiTacBanHang doitac) {
 		this.doitac = doitac;
 	}
-	public DoiTacBanHangMinDistance(Float distance, DoiTacBanHang doitac) {
+	public int getNumberrow() {
+		return numberrow;
+	}
+	public void setNumberrow(int numberrow) {
+		this.numberrow = numberrow;
+	}
+	
+	public DoiTacBanHangMinDistance(Float distance, int numberrow, DoiTacBanHang doitac) {
 		super();
 		this.distance = distance;
+		this.numberrow = numberrow;
 		this.doitac = doitac;
 	}
 	public DoiTacBanHangMinDistance() {

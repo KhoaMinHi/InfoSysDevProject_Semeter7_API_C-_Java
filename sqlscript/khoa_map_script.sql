@@ -56,6 +56,17 @@ SET IDENTITY_INSERT DoiTacBanHang ON;
 insert DoiTacBanHang(MaDoiTacBanHang, emailDoiTacBH, MaSoThue, ngayBatDauBan, SDTDoiTacBH, TenDoiTacBH) 
 values(1234, N'khoaminhi@gmail.com', N'ABCD', '2020-1-1', N'0143424234', N'khoaminhi'),
 	(1235, N'khoaminhi2@gmail.com', N'ABCDF', '2020-1-1', N'0143424236', N'khoaminhi2');
+
+insert DoiTacBanHang(MaDoiTacBanHang, emailDoiTacBH, MaSoThue, ngayBatDauBan, SDTDoiTacBH, TenDoiTacBH) 
+values(1236, N'khoaminhi3@gmail.com', N'ABCD', '2020-1-1', N'0143424234', N'hoang'),
+	(1237, N'khoaminhi21@gmail.com', N'ABCDF', '2020-1-1', N'0143424236', N'trung'),
+	(1238, N'khoaminhi6@gmail.com', N'ABCD', '2020-1-1', N'0143424234', N'khanh'),
+	(1239, N'khoaminhi27@gmail.com', N'ABCDF', '2020-1-1', N'0143424236', N'quang'),
+	(12341, N'khoaminhi8@gmail.com', N'ABCD', '2020-1-1', N'0143424234', N'hai'),
+	(12352, N'khoaminhi29@gmail.com', N'ABCDF', '2020-1-1', N'0143424236', N'banh mi nam can'),
+	(12343, N'khoaminhi65@gmail.com', N'ABCD', '2020-1-1', N'0143424234', N'hong'),
+	(12354, N'khoaminhi287@gmail.com', N'ABCDF', '2020-1-1', N'0143424236', N'khai')
+	;
 go
 SET IDENTITY_INSERT DoiTacBanHang OFF;
 
@@ -63,6 +74,17 @@ SET IDENTITY_INSERT DiaChiDoitac ON;
 insert DiaChiDoitac(MaDiaChi, MaDoiTacBanHang, DiaChi, KhuVuc, Latitude, Longtitude)
 values(234, 1234, N'135 Đ. Trần Hưng Đạo, Phường Cầu Ông Lãnh', 1, 10.767316263803535, 106.69488933045372),
 	(235, 1235, N'18 Điện Biên Phủ, Đa Kao', 1, 10.791934059695496, 106.69875468229652);
+go
+insert DiaChiDoitac(MaDiaChi, MaDoiTacBanHang, DiaChi, KhuVuc, Latitude, Longtitude)
+values(2369, 1236, N'193B Lý Chính Thắng, Võ Thị Sáu', 2, 10.781468010802454, 106.68316603077669),
+	(236, 1237,    N'Nam Kỳ Khởi Nghĩa, Phường 8', 2, 10.790011, 106.683655),
+	(2361, 1238,   N'610 Nguyễn Đình Chiểu, Phường 3', 2, 10.769227, 106.681291),
+	(2362, 1239,   N'Khánh Hội, Phường 4', 3,  10.754222, 106.702049),
+	(2363, 12341,  N'492 Nguyễn Tất Thành, Phường 18', 3,  10.757101, 106.717795),
+	(2364, 12352,  N'phường 9', 3,  10.763271, 106.703866),
+	(2365, 12343,  N'Phạm Thị Ba, Phú Thuận', 4, 10.738088, 106.731995 ),
+	(2366, 12354,  N'39603-39559 Huỳnh Tấn Phát, Phú Mỹ', 4, 10.706105, 106.737586
+ )
 go
 SET IDENTITY_INSERT DiaChiDoitac OFF;
 

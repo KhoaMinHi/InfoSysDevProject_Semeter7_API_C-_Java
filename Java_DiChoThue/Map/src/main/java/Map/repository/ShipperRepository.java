@@ -17,7 +17,8 @@ public interface ShipperRepository extends JpaRepository<Shipper, Long>{
 	
 	@Query(
 			//value = "select * from Shipper s where s.ViTriHienTai like N'%Khê%' or s.ViTriHienTai like N'%Kỳ%'",
-			value = "select * from Shipper s where s.ViTriHienTai like N'%Khê%'",
+			value = "select MaShipper, CMND, HoTen, Latitude, Longtitude, NgaySin, SoDienThoai, TinhTrangSucKhoe,ViTriHienTai"
+					+ " from Shipper s where s.ViTriHienTai like N'%Khê%'",
 			nativeQuery= true)
 	List<Shipper> findShipperLaLongtitudeNative();
 	/*

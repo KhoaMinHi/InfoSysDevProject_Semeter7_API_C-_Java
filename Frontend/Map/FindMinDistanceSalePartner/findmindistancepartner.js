@@ -94,10 +94,11 @@ new Vue({
       baseUrl: 'http://localhost:8080/api/mindistancepartner',
       currentPage: 1,
       perPage: 2,
-      totalPages: 10,
-      total: 100,
+      totalPages: 1,
+      total: 1,
       partners: null,
-      partnerCols: ['MaDoiTacBanHang', 'TenDoiTacBH', 'SDTDoiTacBH', 'DiaChi', 'Latitude', 'Longtitude', 'MinDistance']
+      partnerCols: ['Mã Cửa hàng', 'Tên cửa hàng', 'Số điện thoại', 'Địa chỉ', 'Vĩ độ', 'Kinh độ', 'Khoảng cách nhỏ nhất'],
+      item: '<div id="loader" class="loader"></div>',
     };
   },
   methods: {
@@ -108,8 +109,10 @@ new Vue({
     },
 
     getData() {
+      document.getElementById("loader").style.display = "block";
       try {
         fetch(`${this.baseUrl}/${this.currentPage}/${this.perPage}`)
+
           .then(response => {
 
             if (response.ok) {
@@ -119,12 +122,25 @@ new Vue({
               alert("Server returned " + response.status + " : " + response.statusText);
             }
           }).then(response => {
-            this.partners = JSON.parse(JSON.stringify(response));
+            const temp = JSON.parse(JSON.stringify(response));
+            this.partners = temp[0];
+            this.total = temp[1];
+            this.totalPages = Math.round(this.total / this.perPage);
+            this.load();
           });
       }
       catch (err) {
         console.log(err);
       }
     },
+
+    load() {
+      var myobj = document.getElementById("loader");
+      myobj.style.display = "none";
+    },
+
+  },
+  mounted() {
+    this.getData()
   },
 });

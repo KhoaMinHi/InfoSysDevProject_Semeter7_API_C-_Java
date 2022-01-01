@@ -46,38 +46,3 @@ const app = new Vue({
     }
 })
 
-
-const shipper = new Vue({
-    el: '#shipper',
-    data: {
-        shipper: null,
-        responseAvailable: false
-    },
-    methods: {
-        fetchAPIData() {
-
-            this.responseAvailable = false;
-            fetch("http://localhost:8080/api/shipper", {
-                "method": "GET"
-
-            }).then(response => {
-
-                if (response.ok) {
-                    return response.json()
-                } else {
-
-                    alert("Server returned " + response.status + " : " + response.statusText);
-                }
-            }).then(response => {
-
-                this.shipper = JSON.parse(JSON.stringify(response));
-                this.responseAvailable = true;
-
-            }).catch(err => {
-                console.log(err);
-            });
-
-        }
-
-    }
-})
