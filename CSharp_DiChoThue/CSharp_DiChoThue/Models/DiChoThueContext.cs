@@ -38,8 +38,8 @@ namespace CSharp_DiChoThue.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                //optionsBuilder.UseSqlServer("Server=.;Database=DiChoThue;Trusted_Connection=True;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=.;Database=DiChoThue;Trusted_Connection=True;");
             }
         }
 
@@ -299,6 +299,8 @@ namespace CSharp_DiChoThue.Models
                 entity.Property(e => e.NgaySinh).HasColumnType("date");
 
                 entity.Property(e => e.SoDienThoai).HasMaxLength(10);
+
+                entity.Property(e => e.ViTriHienTai).HasMaxLength(200);
 
                 entity.HasOne(d => d.TinhTrangSucKhoeNavigation)
                     .WithMany(p => p.Shipper)

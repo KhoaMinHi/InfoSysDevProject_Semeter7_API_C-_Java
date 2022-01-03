@@ -17,6 +17,9 @@ namespace CSharp_DiChoThue.Models
         public string SoDienThoai { get; set; }
         public string Cmnd { get; set; }
         public int? TinhTrangSucKhoe { get; set; }
+        public string ViTriHienTai { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longtitude { get; set; }
 
         public TinhTrangSucKhoe TinhTrangSucKhoeNavigation { get; set; }
         public ICollection<DonHang> DonHang { get; set; }
