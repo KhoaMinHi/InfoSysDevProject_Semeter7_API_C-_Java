@@ -26,6 +26,7 @@ namespace CSharp_DiChoThue.Controllers
             return _context.DoiTacBanHang.ToList();
         }
 
+        //kiem tra thong tin cua hang
         // GET: api/CuaHang/5
         [HttpGet("{id}", Name = "Get")]
         public IEnumerable<Object> Get(int id)

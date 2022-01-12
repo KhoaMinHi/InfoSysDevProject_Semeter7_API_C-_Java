@@ -102,6 +102,8 @@ values(345, 1, N'Củ Khoai', 30000),
 go
 SET IDENTITY_INSERT SanPham OFF;
 
+update SanPham set MaDoiTacBanHang = 1236 where MaSanPham=345;
+update SanPham set MaDoiTacBanHang = 1236 where MaSanPham=346;
 
 insert ChiTietDanhSachSanPham(MaDanhSachChuanBi, MaSanPham, DonGia, SoLuong)
 values(234, 345, 30000, 50),
