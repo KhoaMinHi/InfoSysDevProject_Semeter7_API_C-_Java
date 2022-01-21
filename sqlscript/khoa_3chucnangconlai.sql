@@ -15,3 +15,8 @@ go
 
 --dang ky van chuyen don hang
 update DonHang set MaShipper = ? where MaDonHang = ?;
+
+select * from Shipper;
+select * from KhachHang;
+select * from SanPham;
+select * from DonHang;
