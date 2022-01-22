@@ -17,6 +17,8 @@ namespace CSharp_DiChoThue
 {
     public class Startup
     {
+        //cors
+        private readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +33,15 @@ namespace CSharp_DiChoThue
 
             services.AddDbContext<DiChoThueContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //add cors to be allowed access
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.AllowAnyOrigin();
+                });
+            });
 
         }
 
@@ -46,6 +57,8 @@ namespace CSharp_DiChoThue
                 app.UseHsts();
             }
 
+            //add cors to be accessed to.
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
             app.UseMvc();
         }

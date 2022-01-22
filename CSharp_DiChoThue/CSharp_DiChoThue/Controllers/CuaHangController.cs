@@ -36,8 +36,9 @@ namespace CSharp_DiChoThue.Controllers
                        where dt.MaDoiTacBanHang == id
                        select new
                        {
-                           dt,
-                           dc
+                           dt.TenDoiTacBh, dt.EmailDoiTacBh ,dt.SdtdoiTacBh, dt.NgayBatDauBan,
+                           dt.MaSoThue,
+                           dc.DiaChi
 
                        }).ToList();
 

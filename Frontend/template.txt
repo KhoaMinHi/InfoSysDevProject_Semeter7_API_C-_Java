@@ -1,0 +1,22 @@
+1. Khach Hang
+1.2 Big Store (chọn cái này)
+https://p.w3layouts.com/demos/june-2016/01-06-2016/big_store/web/
+
+- có thanh search
+- có phân danh mục phân loại
+- có register
+- có login
+- có cart, add cart, quản lý giỏ hàng(show modal-nó hiện form), 
+- show chi tiet san phẩm bằng modal
+- offers
+- trong mục Codes có một số code về pagination mà tĩnh (nếu muốn động mn có thể xem code của tui, và tham khảo thêm phần offset
+	limmit nếu trực tiếp database)
+- có alert box, tab, form, table
+- chú ý là đừng xóa link nhúng dưới phần body tới trang web (http://w3layouts.com/)
+
+1.1 Ogani Shop
+https://themewagon.com/free-html-ecommerce-templates-html5-bootstrap/
+
+link dơnload: https://themewagon.com/themes/free-bootstrap-4-html5-responsive-ecommerce-website-template-ogani/
+
+
