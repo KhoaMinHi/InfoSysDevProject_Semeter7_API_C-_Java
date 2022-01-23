@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CSharp_DiChoThue.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CSharp_DiChoThue.Controllers
 {
@@ -28,9 +29,8 @@ namespace CSharp_DiChoThue.Controllers
         //Dang ky van chuyen don hang
         // PUT: api/DangKyVanChuyenDH/5
         [HttpPut("{maDonHang}/{maShipper}")]
-        public ActionResult<object> Put(int maShipper, int maDonHang)
+        public ActionResult<object> Put(int maDonHang, int maShipper)
         {
-
             try
             {
                 if ((_context.Shipper.FindAsync(maShipper)) == null)
@@ -42,24 +42,20 @@ namespace CSharp_DiChoThue.Controllers
                     return NotFound($"Employee with Id = {maDonHang} not found");
                 }
 
-                DonHang donhang = new DonHang() { MaDonHang = maDonHang, MaShipper = maShipper };
 
-                var temp = _context.DonHang.Update(donhang).Entity;
-                _context.SaveChangesAsync(); //to save data into database
-
-                return temp;
+                DonHang donhang = new DonHang
+                {
+                    MaDonHang = maDonHang
+                };
+                _context.DonHang.Attach(donhang);
+                donhang.TrangThaiDonHang = 2;
+                return _context.SaveChanges(); //to save data into database
             }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                 "Error updating data");
             }
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

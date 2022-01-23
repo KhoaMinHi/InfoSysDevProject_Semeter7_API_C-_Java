@@ -20,3 +20,14 @@ select * from Shipper;
 select * from KhachHang;
 select * from SanPham;
 select * from DonHang;
+
+select *
+from Shipper s join DonHang dh on s.MaShipper = dh.MaShipper
+     join ChiTietDonHang ct on dh.MaDonHang = ct.MaDonHang
+     join SanPham sp on ct.MaSanPham = sp.MaSanPham
+      join DoiTacBanHang dt on sp.MaDoiTacBanHang = dt.MaDoiTacBanHang
+     join DiaChiDoitac dcdt on dt.MaDoiTacBanHang = dcdt.MaDoiTacBanHang
+	 join KhachHang kh on dh.MaKhachHang = kh.MaKhachHang
+     join DiaChiKhachHang dckh on dh.MaDiaChi = dckh.MaDiaChi
+     
+where s.MaShipper = '4181' --&& dh.TrangThaiDonHang == 1

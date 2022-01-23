@@ -40,6 +40,9 @@ namespace CSharp_DiChoThue
                 builder =>
                 {
                     builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                    builder.AllowCredentials();
                 });
             });
 
