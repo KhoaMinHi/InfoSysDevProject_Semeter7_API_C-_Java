@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -43,8 +44,13 @@ public class DoiTacBanHangMinDistanceController {
 	// api
 	@GetMapping("/mindistancepartner/{currentPage}/{perPage}")
 	public ResponseEntity<List<Object>> CalculateDistances(@PathVariable String currentPage, 
-			@PathVariable String perPage) 
+			@PathVariable String perPage,
+			@RequestParam("latitude") Float userLatitude, @RequestParam("longitude") Float userLongtitude
+	) 
 	{
+		if(userLatitude != null && userLongtitude != null) {
+			mywaypoint = Float.toString(userLatitude) + ", " + Float.toString(userLongtitude);
+		}
 		int cPage = Integer.parseInt(currentPage);
 		int pPage = Integer.parseInt(perPage);
 		int endRow = cPage * pPage;

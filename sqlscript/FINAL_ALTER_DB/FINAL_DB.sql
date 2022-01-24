@@ -260,9 +260,15 @@ ALTER TABLE Shipper ADD Longtitude float;
 alter table DiaChiDoiTac add Latitude float;
 alter table DiaChiDoiTac add Longtitude float;
 
+--########### Hoang #############--
 alter table KhachHang add MatKhau varchar(10);
 alter table KhachHang add TrangThai int;
 alter table DoiTacBanHang add TrangThai int;
+alter table DoiTacBanHang add MatKhau varchar(10);
+alter table Shipper add TrangThai int;
+alter table Shipper add MatKhau varchar(10);
+alter table NhanVien add TrangThai int;
+alter table NhanVien add MatKhau varchar(10);
 --########## Huyền ############--
 use Final_DiChoThue
 go

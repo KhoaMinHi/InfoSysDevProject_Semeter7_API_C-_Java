@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,8 +41,12 @@ public class ShipperController {
 	
 	//api
 	@GetMapping("/mindistance")
-	public ResponseEntity<List<ShipperAndAPIDistances>> CalculateDistances() {
+	public ResponseEntity<List<ShipperAndAPIDistances>> CalculateDistances
+	(@RequestParam("latitude") Float userLatitude, @RequestParam("longitude") Float userLongtitude) {
 		try {
+			if(userLatitude != null && userLongtitude != null) {
+				mywaypoint = Float.toString(userLatitude) + ", " + Float.toString(userLongtitude);
+			}
 			// create by Shipper and Distance constructor to contain the result
 			List<ShipperAndAPIDistances> shipperlst = new ArrayList<ShipperAndAPIDistances>();
 			// caculate min Distance and add Shipper min distance
