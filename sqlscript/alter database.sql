@@ -119,3 +119,10 @@ join DoiTacBanHang dt on dt.MaDoiTacBanHang=sp.MaDoiTacBanHang
 join DiaChiDoitac dcdt on dcdt.MaDoiTacBanHang=dt.MaDoiTacBanHang
 join DiaChiKhachHang dckh on dckh.MaDiaChi=dh.MaDiaChi
 join KhachHang kh on kh.MaKhachHang=dh.MaKhachHang
+
+select * from Shipper s join DonHang dh on s.MaShipper=dh.MaShipper;
+
+
+
+
+

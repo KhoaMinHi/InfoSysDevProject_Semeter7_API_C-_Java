@@ -1,6 +1,6 @@
-﻿create database DiChoThue
+﻿create database Final_DiChoThue
 go
-use DiChoThue
+use Final_DiChoThue
 go
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[Shipper]') AND OBJECTPROPERTY(id, N'IsUserTable') = 1)
@@ -233,6 +233,7 @@ ALTER TABLE ChiTietDanhSachSanPham ADD CONSTRAINT fk_ctdssp_dscb FOREIGN KEY (Ma
 ALTER TABLE ChiTietDanhSachSanPham ADD CONSTRAINT fk_ctdssp_sp FOREIGN KEY (MaSanPham)REFERENCES SanPham (MaSanPham);
 ALTER TABLE SanPham ADD CONSTRAINT fk_sp_dm FOREIGN KEY (MaDanhMuc)REFERENCES DanhMuc (MaDanhMuc);
 ALTER TABLE SanPham ADD CONSTRAINT fk_sp_dtbh FOREIGN KEY (MaDoiTacBanHang)REFERENCES DoiTacBanHang (MaDoiTacBanHang);
+--ALTER TABLE DiaChiKhachHang ADD CONSTRAINT fk_dc_kh FOREIGN KEY (MaKhachHang)REFERENCES KhachHang (MaKhachHang);
 ALTER TABLE DonHang ADD CONSTRAINT fk_dh_kh FOREIGN KEY (MaKhachHang)REFERENCES KhachHang (MaKhachHang);
 ALTER TABLE DonHang ADD CONSTRAINT fk_dh_shp FOREIGN KEY (MaShipper)REFERENCES Shipper (MaShipper);
 ALTER TABLE DonHang ADD CONSTRAINT fk_dh_nv FOREIGN KEY (MaNhanVienQuanLy)REFERENCES NhanVien (MaNhanVien);
@@ -247,55 +248,100 @@ ALTER TABLE DiaChiKhachHang ADD CONSTRAINT fk_dckh_kv FOREIGN KEY (MaKhuVuc)REFE
 ALTER TABLE KhuVucHoatDong ADD CONSTRAINT fk_kvhd_shp FOREIGN KEY (MaShipper)REFERENCES Shipper (MaShipper);
 ALTER TABLE KhuVucHoatDong ADD CONSTRAINT fk_kvhd_kv FOREIGN KEY (KhuVuc)REFERENCES KhuVuc (MaKhuVuc);
 
----------------------------
-insert into TinhTrangSucKhoe(TenTTSK, SoMuiDaTiem)
-values ('Do', 0), ('Vang', 1), ('Xanh', 2)
+--ALTER DB--------------------------
+--###### Khoa ########--
+--thêm cột ViTriHienTai để demo tìm shipper gần nhất.
+ALTER TABLE Shipper ADD ViTriHienTai nvarchar(200);
+--thêm cột latitude và longtitude
+ALTER TABLE Shipper ADD Latitude float;
+ALTER TABLE Shipper ADD Longtitude float;
 
-insert into KhuVuc(Quan_Huyen, ThanhPho, LoaiKhuVuc)
-values ('quan 1', 'Ho Chi Minh', 'cap đo 2'),
- ('quan 3', 'Ho Chi Minh', 'cap đo 2'),
- ('quan 4', 'Ho Chi Minh', 'cap đo 2'),
- ('quan 7', 'Ho Chi Minh', 'cap đo 1')
+--alter table and insert more data
+alter table DiaChiDoiTac add Latitude float;
+alter table DiaChiDoiTac add Longtitude float;
+
+--########## Huyền ############--
+use Final_DiChoThue
+go
+
+--dang ky shipper
+create procedure DangKiShipper
+(@HoTen nvarchar(50), @NgaySinh date, @SoDienThoai nvarchar(10), @CMND nvarchar(10), @TinhTrangSucKhoe int, @Quan_Huyen nvarchar(50), @ThanhPho nvarchar(50))
+as
+	declare @makv int 
+	declare @MaShipper int 
+
+	  
+	select @makv= makhuvuc from KhuVuc where Quan_Huyen = @Quan_Huyen and ThanhPho = @ThanhPho
+
+	insert into  Shipper  (HoTen, NgaySinh, SoDienThoai, CMND, TinhTrangSucKhoe)
+	values (@HoTen, @NgaySinh, @SoDienThoai, @CMND, @TinhTrangSucKhoe)
+
+	 select @MaShipper = max(MaShipper) from Shipper 
+
+	insert into KhuVucHoatDong(MaShipper, KhuVuc)
+	values (cast(@MaShipper as int), cast(@makv as int))
+
+go
+
+---xoa shipper 
+create procedure XoaShipper (@MaShipper nvarchar(50))
+as
+	delete KhuVucHoatDong where MaShipper = @MaShipper
+	delete Shipper where MaShipper = @MaShipper
+
+go
+
+--cap nhat thong tin shipper
+create procedure CapNhapShipper (@MaShipper nvarchar(50), @HoTen nvarchar(50), @NgaySinh date, @SoDienThoai nvarchar(10), @CMND nvarchar(10), @TinhTrangSucKhoe int, @Quan_Huyen nvarchar(50), @ThanhPho nvarchar(50))
+as
+	update Shipper  
+           set HoTen = @HoTen, 
+			NgaySinh = @NgaySinh, 
+            SoDienThoai = @SoDienThoai, 
+            CMND = @CMND, 
+            TinhTrangSucKhoe = @TinhTrangSucKhoe
+             where MaShipper = @MaShipper
+
+	declare @makv int
+	select @makv= makhuvuc from KhuVuc where Quan_Huyen = @Quan_Huyen and ThanhPho = @ThanhPho
+	update KhuVucHoatDong
+	set KhuVuc = @makv
+	where MaShipper = @MaShipper
+
+go
+
+-- shipper tiep nhan don hang
+create procedure sp_NhanDonHang(@mashipper int, @madonhang int)
+as
+	update DonHang
+	set mashipper = @mashipper,
+		trangthaidonhang = 2
+	where MaDonHang = @madonhang
+go
 
 
-insert into  Shipper  (HoTen, NgaySinh, SoDienThoai, CMND, TinhTrangSucKhoe)
-values ('Tran Van An', '1995-03-04', '2938474345', '290384839', '2')
+--########## Lộc ################--
+use Final_DiChoThue;
+create table PhanHoiKhachHang (
+	MaPhanHoiKH int identity(1,1) primary key,
+	Rating int,
+	NoiDung nvarchar(255),
+	MaSanPham int,
+	MaKhachHang int,
+	FOREIGN KEY (MaSanPham) REFERENCES SanPham(MaSanPham),
+	FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
+);
 
-insert into DoiTacBanHang (TenDoiTacBH, emailDoiTacBH, SDTDoiTacBH, ngayBatDauBan, MaSoThue)
-values('ABC FOOD', 'abcfood123@gmail.com', '123456', '2021-1-1', '0212732317-018')
+create table PhanHoiKH_Shipper (
+	MaPhanHoiKH_Shipper int identity(1,1) primary key,
+	Rating int,
+	NoiDung nvarchar(255),
+	MaShipper int,
+	MaKhachHang int,
+	FOREIGN KEY (MaShipper) REFERENCES Shipper(MaShipper),
+	FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
+);
 
-insert into DiaChiDoitac (DiaChi, MaDoiTacBanHang, KhuVuc)
-values ('12/1 Phường 6', 1 , 1)
 
-insert into KhuVucHoatDong(MaShipper, KhuVuc)
-values(1, 1)
 
-insert into KhachHang(TenKhachHang, SDT, CMND, Email)
-values('Nguyen Ngoc Ha', '6734824', '3287942', 'nnha@gmail.com')
-
-insert into DanhMuc(TenDanhMuc)
-values ('Rau Cu'), ('Thit')
-
-insert into SanPham(TenSanPham, DonGia, MaDoiTacBanHang, MaDanhMuc)
-values ('Thit Heo Vai', '85000', '1', '2')
-
-insert into TrangThaiDonHang(TenTrangThai)
-values ('Dat hang thanh cong, dang tim Shipper'),
-	('Shipper da nhan don hang'),
-	('Shipper dang mua hang'),
-	('Mua hang thanh cong, dang giao hang'),
-	('Don hang giao thanh cong'),
-	('Don hang bi huy')
-
-insert into NhanVien(Hoten, SDT, email, CMND)
-values ('Phan Van Hien', '420498553', 'pnhien1123@gmail.com', '53897956'),
- ('Nguyen Thi Hien', '3498547323', 'nthien1123@gmail.com', '989184372')
-
- insert into DiaChiKhachHang(MaKhachHang, DiaChiGiaoHang, SDT, MaKhuVuc)
- values (1, '6732/1 phuong 3','023948785', 2)
-
- insert into DonHang(NgayDatHang, MaKhachHang, MaDiaChi, TongDon, TyLeGiamGia, MaShipper, MaNhanVienQuanLy, TrangThaiDonHang)
- values (getdate(), 1, 1, '85000', 0, 1, 1, 1)
-
- insert into ChiTietDonHang(MaDonHang, MaSanPham, SoLuong, DonGia)
- values (1, 1, 1, 85000)
