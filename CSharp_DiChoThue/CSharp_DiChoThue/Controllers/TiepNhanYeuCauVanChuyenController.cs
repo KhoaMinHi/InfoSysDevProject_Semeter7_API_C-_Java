@@ -31,7 +31,7 @@ namespace CSharp_DiChoThue.Controllers
                         join dcdt in _context.DiaChiDoitac on dt.MaDoiTacBanHang equals dcdt.MaDoiTacBanHang
                         join dckh in _context.DiaChiKhachHang on dh.MaDiaChi equals dckh.MaDiaChi
                         join kh in _context.KhachHang on dh.MaKhachHang equals kh.MaKhachHang
-                        where s.MaShipper == idShipper //&& dh.TrangThaiDonHang == 1
+                        where s.MaShipper == idShipper && dh.TrangThaiDonHang == 1
                         select new
                         {
                             s.MaShipper,

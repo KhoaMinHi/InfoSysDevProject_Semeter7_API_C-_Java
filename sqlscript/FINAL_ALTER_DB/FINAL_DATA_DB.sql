@@ -1,5 +1,5 @@
-﻿use Final_DiChoThue;
-go
+﻿--use Final_DiChoThue;
+--go
 
 --Tinh trang suc khoe
 insert into TinhTrangSucKhoe(TenTTSK, SoMuiDaTiem)
@@ -138,8 +138,14 @@ join DiaChiDoitac dcdt on dcdt.MaDoiTacBanHang=dt.MaDoiTacBanHang
 join DiaChiKhachHang dckh on dckh.MaDiaChi=dh.MaDiaChi
 join KhachHang kh on kh.MaKhachHang=dh.MaKhachHang
 
+--update password
+--Shipper
+update Shipper set Mail='an@gmail.com', MatKhau = '1234', TrangThai = 1 where MaShipper =4181;
+update Shipper set Mail='nhan@gmail.com', MatKhau = '1234', TrangThai = 1 where MaShipper =4182;
 
-
+--KhachHang
+update KhachHang set Email='quangngai@gmail.com', MatKhau = '1234', TrangThai = 1, TenKhachHang = 'quangngai' where MaKhachHang =41851;
+update KhachHang set Email='khoa@gmail.com', MatKhau = '1234', TrangThai = 1, TenKhachHang = 'khoa'  where MaKhachHang =41852;
 
 
 

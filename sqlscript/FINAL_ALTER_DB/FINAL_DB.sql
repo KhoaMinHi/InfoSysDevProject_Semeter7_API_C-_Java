@@ -267,11 +267,10 @@ alter table DoiTacBanHang add TrangThai int;
 alter table DoiTacBanHang add MatKhau varchar(10);
 alter table Shipper add TrangThai int;
 alter table Shipper add MatKhau varchar(10);
+alter table Shipper add Email nvarchar(50);
 alter table NhanVien add TrangThai int;
 alter table NhanVien add MatKhau varchar(10);
 --########## Huyền ############--
-use Final_DiChoThue
-go
 
 --dang ky shipper
 create procedure DangKiShipper
@@ -331,7 +330,6 @@ go
 
 
 --########## Lộc ################--
-use Final_DiChoThue;
 create table PhanHoiKhachHang (
 	MaPhanHoiKH int identity(1,1) primary key,
 	Rating int,
@@ -352,5 +350,6 @@ create table PhanHoiKH_Shipper (
 	FOREIGN KEY (MaKhachHang) REFERENCES KhachHang(MaKhachHang)
 );
 
-
+--test
+select * from Shipper;
 
